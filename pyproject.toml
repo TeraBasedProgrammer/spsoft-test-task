@@ -1,0 +1,54 @@
+[project]
+name = "spsoft-test-voice-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "livekit-agents[deepgram,groq,silero,turn-detector]~=1.5",
+    "python-dotenv>=1.2.2",
+]
+
+[project.scripts]
+agent = "app.main:main"
+
+
+[dependency-groups]
+dev = [
+    "bandit>=1.9.4",
+    "black>=26.5.1",
+    "flake8>=7.3.0",
+    "isort>=8.0.1",
+]
+
+[tool.black]
+color=true
+exclude = '''
+    /(
+        \.git
+        | \._build
+        | \.back.out
+        | \.build
+        | \.dist
+        | \.hg
+        | \.tox
+        | \.venv
+    )/
+'''
+include = '\.pyi?$'
+line-length = 88
+
+[tool.isort]
+profile="black"
+skip = [
+    ".dockerignore",
+    ".env",
+    ".github",
+    ".gitignore",
+    ".md",
+    ".python-version",
+]
+
+[tool.uv]
+package = true
+
